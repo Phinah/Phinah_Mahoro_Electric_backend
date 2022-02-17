@@ -1,0 +1,17 @@
+const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+const rootFolder =  isProduction ? 'dist' : 'src';
+
+const databasePath = path.join(__dirname, rootFolder, 'database');
+
+module.exports = {
+  config: path.join(databasePath, 'config', 'config.js'),
+  'models-path': path.join(databasePath, 'models'),
+  'seeders-path': path.join(databasePath, 'seeders'),
+  'migrations-path': path.join(databasePath, 'migrations'),
+};
